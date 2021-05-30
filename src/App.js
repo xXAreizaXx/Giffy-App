@@ -1,26 +1,13 @@
-import React , {useEffect , useState} from 'react'
-import getGifs from './services/getGifs'
-import Gif from './components/Gif'
-import './App.css';
+import React , { useState } from 'react'
+import ListOfGifs from './components/ListOfGifs'
 
 export default function App () {
-    const [gifs , setGifs] = useState([]);  
-    
-    useEffect(() => {
-        getGifs({keyword: 'programing'}).then(gifs => setGifs(gifs));              
-    } , []) 
-
+    const [keyword, setkeyword] = useState('Panda')
     return (
         <div>
             <h1>App de GIFS</h1>
-            {
-                gifs.map(singleGif => {
-                    return (
-                        <Gif key={singleGif.id} title={singleGif.title} id={singleGif.id} url={singleGif.url}/> 
-                    )                                                          
-                })
-            }
-        </div>
-        
+            <ListOfGifs keyword={keyword}/>
+            <button onClick={() => setkeyword('Futbol')}>Cambiar</button>
+        </div>        
     );
 }
