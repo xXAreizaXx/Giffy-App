@@ -1,13 +1,25 @@
-import React , { useState } from 'react'
-import ListOfGifs from './components/ListOfGifs'
+import React from 'react'
+import {Link , Route} from 'wouter'
+import Home from './pages/Home';
+import SearchResults from './pages/SearchResults';
+import Detail from './pages/Detail';
+import StaticContext from './context/StaticContext';
+import { GifsContextProvider } from './context/GifsContext';
 
 export default function App () {
-    const [keyword, setkeyword] = useState('Panda')
     return (
-        <div>
-            <h1>App de GIFS</h1>
-            <ListOfGifs keyword={keyword}/>
-            <button onClick={() => setkeyword('Futbol')}>Cambiar</button>
-        </div>        
+        <StaticContext.Provider value={{name: 'Jorge', suscribete: true}}
+        >
+            <div>
+                <section>
+                    <Link to='/'><img src='Giffy.ico' alt=""/></Link>
+                    <GifsContextProvider>
+                        <Route component={Home} path='/'/>
+                        <Route component={SearchResults} path='/search/:keyword'/>
+                        <Route component={Detail} path='/search/:id'/>
+                    </GifsContextProvider>
+                </section>
+            </div>   
+        </StaticContext.Provider> 
     );
 }
