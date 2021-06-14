@@ -1,9 +1,8 @@
 import React , {Fragment , useState} from 'react'
-import { Link , useLocation } from 'wouter'
-import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
-import {useGif} from '../../hooks/useGifs';
-
-const POPULAR_GIFS = ["Matrix" , "Chile" , "Colombia" , "Ecuador"];
+import { useLocation } from 'wouter'
+import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
+import TrendingSearches from 'components/TrendingSearches';
+import {useGif} from 'hooks/useGifs';
 
 export default function Home () {
     const [keyword, setkeyword] = useState('')
@@ -26,15 +25,7 @@ export default function Home () {
             <h3>Ultima Busqueda</h3>
             <ListOfGifs gifs = {gifs}/>
             <h3>Los GIFS mas populares</h3>
-            <ul>
-            {
-                POPULAR_GIFS.map((popularGifs) => (
-                    <li key='popularGifs'>
-                        <Link to={`/search/${popularGifs}`}>Gifs de {popularGifs}</Link>
-                    </li>
-                ))
-            }
-            </ul>
+            <TrendingSearches/>
         </Fragment>
     )
 }
