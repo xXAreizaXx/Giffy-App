@@ -4,7 +4,7 @@ import getGifs from 'services/getGifs';
 
 const INITIAL_PAGE = 0;
 
-export function useGif ({keyword} = {keyword: null}) {
+export function useGifs ({keyword} = {keyword: null}) {
     const [loading, setLoading] = useState(false)
     const [loadingNextPage, setloadingNextPage] = useState(false)
     const [Page, setPage] = useState(INITIAL_PAGE)
