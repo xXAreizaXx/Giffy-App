@@ -3,7 +3,6 @@ import Gif from 'components/Gif/Gif'
 import { Redirect } from 'wouter'
 import useSingleGif from 'hooks/useSingleGif'
 import Spinner from 'components/Spinner/Spinner'
-import useSEO from 'hooks/useSEO'
 import { Helmet } from 'react-helmet'
 
 export default function Detail({ params }) {
